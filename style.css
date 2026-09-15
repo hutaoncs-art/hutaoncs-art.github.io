@@ -100,7 +100,7 @@ header{
 @media (max-width:940px){
   .nav-links{display:none;}
   .menu-toggle{display:flex;}
-  .nav-cta .btn-ghost{display:none;}
+  .nav-cta .btn{display:none;}
 }
 .mobile-overlay{
   display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4);
@@ -186,6 +186,36 @@ h1 .hl{color:var(--teal-dark);}
 .sf-field textarea{resize:vertical; min-height:70px;}
 .sf-submit{width:100%; justify-content:center; padding:14px 22px;}
 .sf-note{font-family:var(--mono); font-size:10.5px; color:var(--ink-faint); text-align:center; margin-top:2px;}
+
+/* ---------- Phone preview ---------- */
+.phone-preview{
+  display:none; margin-top:12px; padding:20px; border-radius:var(--radius);
+  background:linear-gradient(135deg, var(--bg-soft) 0%, #fff 100%);
+  border:1.5px solid var(--line); align-items:center; gap:16px;
+  animation:previewIn 0.35s ease;
+}
+.phone-preview.show{display:flex;}
+@keyframes previewIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+.phone-preview .pp-icon{
+  width:56px; height:90px; border-radius:10px; border:2px solid var(--line);
+  background:#fff; display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; position:relative; overflow:hidden;
+}
+.phone-preview .pp-icon::before{
+  content:''; position:absolute; top:6px; left:50%; transform:translateX(-50%);
+  width:18px; height:4px; border-radius:2px; background:var(--line);
+}
+.phone-preview .pp-icon svg{width:28px; height:28px; margin-top:6px;}
+.phone-preview .pp-info{min-width:0;}
+.phone-preview .pp-brand{font-family:var(--display); font-weight:800; font-size:15px; color:var(--ink); margin-bottom:2px;}
+.phone-preview .pp-tag{font-family:var(--mono); font-size:10.5px; font-weight:600; color:var(--teal-dark); letter-spacing:0.03em; text-transform:uppercase; margin-bottom:8px;}
+.phone-preview .pp-models{display:flex; flex-wrap:wrap; gap:6px;}
+.pp-model-chip{
+  font-family:var(--mono); font-size:10px; font-weight:600;
+  padding:4px 10px; border-radius:100px; border:1px solid;
+  background:#fff; white-space:nowrap;
+}
+.pp-model-chip.pp-more{color:var(--ink-faint); border-color:var(--line);}
 
 /* ---------- Section shell ---------- */
 section{position:relative; z-index:1; padding:84px 0;}
@@ -420,6 +450,7 @@ footer::before{content:''; position:absolute; top:-40px; left:0; right:0; height
 /* ---------- Mobile fixes ---------- */
 @media (max-width:640px){
   .nav{height:64px;}
+  .mobile-panel{padding-top:72px;}
   .logo{font-size:16px; gap:8px;}
   .logo .badge{width:32px; height:32px; border-radius:9px;}
   .logo small{font-size:9px;}
